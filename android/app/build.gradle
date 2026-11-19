@@ -1,0 +1,78 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+    id("com.google.gms.google-services") apply false
+}
+
+// Firebase configuration is environment-specific. Apply the plugin when the
+// Android app's config is present; builds without Firebase can still proceed.
+if (file("google-services.json").exists()) {
+    apply plugin: "com.google.gms.google-services"
+} else {
+    logger.lifecycle("No android/app/google-services.json found; Google Services plugin is skipped.")
+}
+
+def keyPropertiesFile = rootProject.file("key.properties")
+def keyProperties = new Properties()
+if (keyPropertiesFile.exists()) {
+    keyProperties.load(new FileInputStream(keyPropertiesFile))
+}
+
+android {
+    namespace = "com.tukaatuexpress.tukaatuexpress"
+    compileSdk = 36
+    ndkVersion = "28.2.13676358"
+
+    compileOptions {
+        // sourceCompatibility = JavaVersion.VERSION_1_8
+        // targetCopatibility = JavaVersion.VERSION_1_8
+         sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+    }
+    kotlinOptions {
+    jvmTarget = "17"
+}
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.tukaatuexpress.tukaatuexpress"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdkVersion = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            keyAlias = keyProperties["keyAlias"]
+            keyPassword = keyProperties["keyPassword"]
+            storeFile = keyProperties["storeFile"] ? file(keyProperties["storeFile"]) : null
+            storePassword = keyProperties["storePassword"]
+        }
+    }
+
+    packagingOptions {
+        pickFirst 'lib/**/libc++_shared.so'
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+}
+dependencies {
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.5"
+    implementation platform("com.google.firebase:firebase-bom:33.7.0")
+    implementation "com.google.firebase:firebase-analytics"
+}
+flutter {
+    source = "../.."
+}

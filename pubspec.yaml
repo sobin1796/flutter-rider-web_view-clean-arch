@@ -1,0 +1,124 @@
+name: tukaatuexpress
+
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.1.61+67
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  app_links: ^7.2.1
+  crypto: ^3.0.3
+  cached_network_image: ^3.4.1
+  carousel_slider: ^5.1.1
+  dartz: ^0.10.1
+  dio: ^5.4.3+1
+  flutter:
+    sdk: flutter
+  flutter_animate: ^4.5.0
+  flutter_displaymode: ^0.6.0
+  flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.0.10+1
+  form_validator: ^2.1.1
+  go_router: ^14.8.1
+  image_picker: ^1.1.2
+  intl: ^0.20.2
+  json_annotation: ^4.12.0
+  loading_animation_widget: ^1.2.1
+  path_provider: ^2.1.4
+  permission_handler: ^11.3.1
+  pinput: ^5.0.0
+  pretty_dio_logger: ^1.4.0
+  shared_preferences: ^2.5.3
+  url_launcher: ^6.3.3
+  vector_graphics: any
+  flutter_bloc: ^9.1.0
+  file_picker: ^10.0.0
+  device_info_plus: ^10.1.2
+  get_it: ^8.0.3
+  injectable: ^2.5.0
+  fluttertoast: ^8.2.12
+  shimmer: ^3.0.0
+  share_plus: ^12.0.2
+  visibility_detector: ^0.4.0+2
+  flutter_map: ^8.3.0
+  latlong2: ^0.9.1
+  webview_flutter: ^4.13.1
+  persistent_bottom_nav_bar: ^6.2.1
+  http: ^1.6.0
+  geolocator: ^14.0.2
+  pusher_channels_flutter: ^2.6.0
+  # Provides the editor UI used by pro_video_editor's video workflow.
+  freezed_annotation: ^3.1.0
+  firebase_core: ^4.12.1
+  flutter_local_notifications: ^22.1.0
+  firebase_messaging: ^16.4.3
+  upgrader: ^13.7.0
+  lottie: ^3.5.1
+  flutter_fortune_wheel: ^1.3.2
+
+  awesome_bottom_bar: ^1.2.4
+
+dependency_overrides:
+  # galli_vector_plugin still declares geolocator ^9, while this app uses ^14.
+  geolocator: ^14.0.2
+
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  build_runner: ^2.15.1
+  freezed: ^3.2.3
+  flutter_gen_runner: ^5.14.1
+  injectable_generator: ^2.8.1
+  json_serializable: ^6.7.0
+  flutter_launcher_icons: ^0.14.4
+  very_good_analysis: ^6.0.0
+  flutter_test:
+    sdk: flutter
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_logo.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
+  background_color_ios: "#ffffff"
+  adaptive_icon_background: "#ffffff"
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/fonts/
+    - assets/animations/
+  fonts:
+
+    - family: Inter
+      fonts:
+       - asset: assets/fonts/InterExtraLight.ttf
+         weight: 200
+       - asset: assets/fonts/InterLight.ttf
+         weight: 300
+       - asset: assets/fonts/InterRegular.ttf
+         weight: 400
+       - asset: assets/fonts/InterMedium.ttf
+         weight: 500
+       - asset: assets/fonts/InterSemiBold.ttf
+         weight: 600
+       - asset: assets/fonts/InterBold.ttf
+         weight: 700
+       - asset: assets/fonts/InterBlack.ttf
+         weight: 900
+    - family: Epilogue
+      fonts:
+        - asset: assets/fonts/epilogueRegular.ttf
+          weight: 400
+        - asset: assets/fonts/epilogueMedium.ttf
+          weight: 500
+        - asset: assets/fonts/epilogueSemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/epilogueBold.ttf
+          weight: 700
+     
+flutter_gen:
+  output: lib/gen/
+  integrations:
+    flutter_svg: true

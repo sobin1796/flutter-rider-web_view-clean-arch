@@ -1,0 +1,1 @@
+enum ProductCardBadge { newArrival, flashSale }
